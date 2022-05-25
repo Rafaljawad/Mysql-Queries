@@ -1,0 +1,19 @@
+USE customer;
+-- create
+INSERT INTO users(id,first_name,last_name,email)
+VALUES
+(1,'Adam','Jhone','adamj34@email.com'),
+(2,'Lily','Danial','lily34524@email.com'),
+(3,'Steve','Noah','Noahst@email.com'),
+(4,'mary','joe','maryiajonson@email.com'),
+(5,'nina','bob','ninase23@email.com');
+-- read
+SELECT * FROM users;
+-- update
+UPDATE users 
+set first_name="sara"
+WHERE ID=2;
+SELECT first_name FROM users where id=2;
+-- delete
+Delete FROM users where id =5;
+SELECT * FROM users;

@@ -1,0 +1,61 @@
+
+---- Query: Create 3 new dojos
+INSERT INTO dojos
+VALUES
+(1,'Los Angeles',now(),now()),
+(2,'chicago',now(),now()),
+(3,'on-line',now(),now());
+
+----- Query: Delete the 3 dojos you just created
+SET SQL_SAFE_UPDATES = 0;
+DELETE FROM DOJOS;
+
+
+----Query: Create 3 more dojos
+INSERT INTO dojos
+VALUES
+(1,'Los Angeles',now(),now()),
+(2,'chicago',now(),now()),
+(3,'on-line',now(),now());
+SELECT * FROM dojos;
+
+----Query: Create 3 ninjas that belong to the first dojo
+INSERT INTO ningas
+VALUES
+(1,'rafal','jawad',32,now(),now(),1),
+(2,'Adam','lui',38,now(),now(),1),
+(3,'Dina','Noah',40,now(),now(),1);
+
+
+--Query: Create 3 ninjas that belong to the second dojo
+(4,'bob','tim',32,now(),now(),2),
+(5,'nina','rami',38,now(),now(),2),
+(6,'tanya','hero',40,now(),now(),2);
+--Query: Create 3 ninjas that belong to the third dojo
+(7,'Alison','henery',45,now(),now(),3),
+(8,'haya','jonson',30,now(),now(),3),
+(9,'Tony','robert',25,now(),now(),3);
+
+--Query: Retrieve all the ninjas from the first dojo
+SELECT dojos.name as dojo_location, concat(ningas.first_name ,' ',ningas.last_name) as ninga_name, dojos.id
+FROM dojos
+join ningas on dojos.id=ningas.dojo_id
+WHERE dojos.id=1;
+
+
+--Query: Retrieve all the ninjas from the last dojo
+SELECT dojos.name as dojo_location, concat(ningas.first_name ,' ',ningas.last_name) as ninga_name, dojos.id
+FROM dojos
+join ningas on dojos.id=ningas.dojo_id
+WHERE dojos.id=3;
+
+
+--Query: Retrieve the last ninja's dojo
+SELECT dojos.name as dojo_location, dojos.id
+FROM dojos
+join ningas on dojos.id=ningas.dojo_id
+order by ningas.dojo_id desc limit 1;
+
+
+
+
